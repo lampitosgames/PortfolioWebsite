@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="../../jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../header.js"></script>
+    <script type="text/javascript" src="../../contentElements.js"></script>
+    <script type="text/javascript" src="../../button.js"></script>
+    <script type="text/javascript" src="../../utils.js"></script>
+    <script type="text/javascript" src="pagescript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../lampitosgamesStyle.css" />
+    <script src="https://use.typekit.net/lgz1rrt.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="headerHoverLine"></div>
+        <div id="siteTitle">
+            <span id="siteTitleText">LAMPITOSGAMES</span>
+        </div>
+        <div id="headerLinks">
+            <table class="headerLinksTable">
+                <tr class="headerLinkRow">
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">HOME</a></td>
+                    <td class="headerLinkCell"><a href="" id="headerLinkActive" class="headerLinkText">WORK</a></td>
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">ABOUT</a></td>
+                    <td class="headerLinkCell"><a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="headerLinkText">RESUME</a></td>
+                    <td class="headerLinkCell"><a href="mailto:dantimko1@gmail.com" class="headerLinkText">CONTACT</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mobileHeaderButton">
+            <div class="hamburgerButtonWrapper">
+                <div class="hamburgerButton">
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileSidebar">
+        <div id="mobileLinks">
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">HOME</span></a>
+            <a href="" class="mobileSBLink mobileSBLinkActive"><img class="mSBLImage" src="../../Thumbnails/mobileActiveLink.png" /><span class="mobileSBLinkText">WORK</span></a>
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">ABOUT</span></a>
+            <a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="mobileSBLink"><span class="mobileSBLinkText">RESUME</span></a>
+            <a href="mailto:dantimko1@gmail.com" class="mobileSBLink"><span class="mobileSBLinkText">CONTACT</span></a>
+        </div>
+    </div>
+
+    <div class="pageImageHeader">
+        <div class="pageImageHeaderBackground">
+            <img class="pageIHContent" src="background.jpg"/>
+        </div>
+    </div>
+
+    <div class="pageFloatingTitleBox">
+        <div class="pageTitleTextBox">
+            <span class="pageTitleText">
+                <span>
+                    RANDOM GENERATION
+                </span>
+            </span>
+        </div>
+
+        <div class="pTLine"></div>
+        <div class="titleButtons">
+            <a id="readMore" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        READ MORE
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/lampitosgames/RandomSolarSystem" id="viewCode" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        VIEW THE CODE
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="parallaxBody">
+        <a id="readMoreTarget"></a>
+        <div class="mainContent" style="top: 100%">
+            <div class="contentSpacer"></div>
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentBody">
+                <div class="cSpacer"></div>
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Random Solar Systems
+                </div>
+                <div class="cSpacer"></div>
+                <div class="cTextFull animIn">
+                    My Interactive Media Development class spent a few weeks studying random numbers and different algorithms to create them.  This program takes real-world star rarity and system 
+                    data and uses it to create dynamic solar systems.  Potentially millions of unique systems can be created.  It makes use of 3 key algorithms: directed random, Gaussian distribution, 
+                    and Perlin noise.  Systems can have multiple stars and a variable number of planets with a random number of moons each.  Moons orbit planets that orbit the center of mass of the system. 
+                    Multiple stars can generate in the same system, and their barycentric coordinates are calculated dynamically based on mass ratios.  You can download an executeable <a href="https://drive.google.com/file/d/0B2De2euVaNQJcF9VSUNDS0RXalk/view?usp=sharing" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">here</a>.
+                    Alternatively, here is a short image gallery:
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <img class="cPictureContent" src="image1.jpg" />
+                    </div>
+                </div>
+                <br/>
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <img class="cPictureContent" src="image2.jpg" />
+                    </div>
+                </div>
+                <br/>
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <img class="cPictureContent" src="image3.jpg" />
+                    </div>
+                </div>
+                <br/>
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <img class="cPictureContent" src="image4.jpg" />
+                    </div>
+                </div>
+
+                <div class="cSpacer"></div>
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Features
+                </div>
+                <div class="cSpacer"></div>
+
+                <div class="cItemHighlights">
+                    <div class="cIHLeftList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Animated Perlin Noise </div>
+                            <div class="cIHItemDesc">
+                                Stars are generated on the fly, and so are their textures!  The pulsing plasma is made up of colored 3D perlin noise (using the z axis to vary with time).
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Real-World Data </div>
+                            <div class="cIHItemDesc">
+                                I based the star generation off of real-world stellar data.  Masses, rarity, and solar radii are all relatively accurate based on the star class.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+                    </div>
+
+                    <div class="cIHRightList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> User Interaction </div>
+                            <div class="cIHItemDesc">
+                                A dynamic view system makes panning and zooming easy!  I built a view system from the ground up to let the user see whichever parts of the system they wanted to.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> A Spaceship That Explores </div>
+                            <div class="cIHItemDesc">
+                                What good is a system if there is no-one to explore it? By default, the view is locked on to a spaceship that moves randomly and uses Perlin noise to create realistic thrust and RCS exhaust.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="copyright">Copyright © 2016 Daniel Timko</div>
+
+            <div class="contentSpacer"></div>
+        </div>
+    </div>
+</body>
+</html>

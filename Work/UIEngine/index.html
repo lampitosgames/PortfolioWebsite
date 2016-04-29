@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="../../jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../header.js"></script>
+    <script type="text/javascript" src="../../contentElements.js"></script>
+    <script type="text/javascript" src="../../button.js"></script>
+    <script type="text/javascript" src="../../utils.js"></script>
+    <script type="text/javascript" src="pagescript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../lampitosgamesStyle.css" />
+    <script src="https://use.typekit.net/lgz1rrt.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="headerHoverLine"></div>
+        <div id="siteTitle">
+            <span id="siteTitleText">LAMPITOSGAMES</span>
+        </div>
+        <div id="headerLinks">
+            <table class="headerLinksTable">
+                <tr class="headerLinkRow">
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">HOME</a></td>
+                    <td class="headerLinkCell"><a href="" id="headerLinkActive" class="headerLinkText">WORK</a></td>
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">ABOUT</a></td>
+                    <td class="headerLinkCell"><a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="headerLinkText">RESUME</a></td>
+                    <td class="headerLinkCell"><a href="mailto:dantimko1@gmail.com" class="headerLinkText">CONTACT</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mobileHeaderButton">
+            <div class="hamburgerButtonWrapper">
+                <div class="hamburgerButton">
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileSidebar">
+        <div id="mobileLinks">
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">HOME</span></a>
+            <a href="" class="mobileSBLink mobileSBLinkActive"><img class="mSBLImage" src="../../Thumbnails/mobileActiveLink.png" /><span class="mobileSBLinkText">WORK</span></a>
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">ABOUT</span></a>
+            <a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="mobileSBLink"><span class="mobileSBLinkText">RESUME</span></a>
+            <a href="mailto:dantimko1@gmail.com" class="mobileSBLink"><span class="mobileSBLinkText">CONTACT</span></a>
+        </div>
+    </div>
+
+    <div class="pageImageHeader">
+        <div class="pageImageHeaderBackground">
+            <img class="pageIHContent" src="background.jpg"/>
+        </div>
+    </div>
+
+    <div class="pageFloatingTitleBox">
+        <div class="pageTitleTextBox">
+            <span class="pageTitleText">
+                <span>
+                    C# UI ENGINE
+                </span>
+            </span>
+        </div>
+
+        <div class="pTLine"></div>
+        <div class="titleButtons">
+            <a id="readMore" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        READ MORE
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/lampitosgames/ScumbagGalaxy" id="viewCode" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        VIEW THE CODE
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="parallaxBody">
+        <a id="readMoreTarget"></a>
+        <div class="mainContent" style="top: 100%">
+            <div class="contentSpacer"></div>
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentBody">
+                <div class="cSpacer"></div>
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Custom Functionality
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTextFull animIn">
+                    Last semester, I teamed up with some other students to create <a href="../ScumbagGalaxy" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">Scumbag Galaxy</a>.
+                    My role in the project was comprised almost entirely with my custom event-based user interface API.  I had to build the system from the ground up using all 
+                    original code.  The engine we used (MonoGame) was a frequent tool for developing Xbox 360 games.  As such, in-engine mouse support was near non-existant.  So I created an 
+                    efficient engine to run mouse events.  On the front end, the engine makes use of layered rectangle objects, each with their own mouse events.  Boxes on ‘top’ capture events and display 
+                    above ‘lower’ objects.  All of this is handled through the parent UIBox class.  All UI elements are derived from it, allowing the engine backend to work seamlessly 
+                    no matter what type of window is needed during the design process.
+                </div>
+                <br/>
+                <div class="cTextFull animIn">
+                    The backend of the engine is where things get more complex.  I used a custom version of quad tree architecture to achieve resource-efficient mouse collision detection. 
+                    Native MonoGame only provides the mouse location for the current frame.  The GameBoard class manages nearly everything.  On creation, it divides up the screen space 
+                    using a quickly-searchable tree structure.  The smallest section of screen that fits into this tree holds an array of references to UI Boxes that overlap with it.  
+                    In the UIBox constructor, the object places itself into the GameBoard tree (ordered by layer and visibility).  This system is highly efficient to determine which objects 
+                    the mouse collides with.  Instead of checking thousands of UI objects every frame, the tree structure reduces that number to less than 10.
+                </div>
+                <br/>
+                <div class="cTextFull animIn">
+                    Mouse events are checked for during every frame by comparing the previous mouse location with the current one (but it is much more complicated than that).  Layer-based 
+                    mouse events have innumerable edge cases.  If the mouse stays on a lower object for both steps, but moves onto a higher layered object (one that overlaps the lower 
+                    object) in those two steps, what events trigger?  Comments in the code on GitHub go through each of these ideas and how they were fixed, so I won’t cover them here.  
+                    When a mouse event is detected for a UIBox, it calls that box’s corresponding mouse event function.
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Engine Capabilities
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cItemHighlights">
+                    <div class="cIHLeftList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> View and Zoom Support </div>
+                            <div class="cIHItemDesc">
+                                I implemented a fully scale-able viewport system.  The player can zoom in on text and units or pan around the board, all without breaking the underlying mouse event features.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Window Drag and Layering </div>
+                            <div class="cIHItemDesc">
+                                The API can (and is) used to create dynamic window objects with proper layering. Drag and drop functionality, mouse-enter and mouse-leave, and clicks all support the layering functionality.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+                    </div>
+
+                    <div class="cIHRightList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Efficient and Elegant Upscaling </div>
+                            <div class="cIHItemDesc">
+                                Due to the efficiency of my custom tree data structure, stress tests proved that the engine could support the full-force complexity of tactical RPG games filled with tens of thousands of UI objects.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Game States </div>
+                            <div class="cIHItemDesc">
+                                Quickly and dynamically switch between entirely different screen layouts.  This functionality was used for our game's title screen, but could easily be used for entirely new UI windows such as maps or inventory screens.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="copyright">Copyright © 2016 Daniel Timko</div>
+
+            <div class="contentSpacer"></div>
+        </div>
+    </div>
+</body>
+</html>

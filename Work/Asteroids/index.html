@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="../../jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../header.js"></script>
+    <script type="text/javascript" src="../../contentElements.js"></script>
+    <script type="text/javascript" src="../../button.js"></script>
+    <script type="text/javascript" src="../../utils.js"></script>
+    <script type="text/javascript" src="pagescript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../lampitosgamesStyle.css" />
+    <script src="https://use.typekit.net/lgz1rrt.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="headerHoverLine"></div>
+        <div id="siteTitle">
+            <span id="siteTitleText">LAMPITOSGAMES</span>
+        </div>
+        <div id="headerLinks">
+            <table class="headerLinksTable">
+                <tr class="headerLinkRow">
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">HOME</a></td>
+                    <td class="headerLinkCell"><a href="" id="headerLinkActive" class="headerLinkText">WORK</a></td>
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">ABOUT</a></td>
+                    <td class="headerLinkCell"><a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="headerLinkText">RESUME</a></td>
+                    <td class="headerLinkCell"><a href="mailto:dantimko1@gmail.com" class="headerLinkText">CONTACT</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mobileHeaderButton">
+            <div class="hamburgerButtonWrapper">
+                <div class="hamburgerButton">
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileSidebar">
+        <div id="mobileLinks">
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">HOME</span></a>
+            <a href="" class="mobileSBLink mobileSBLinkActive"><img class="mSBLImage" src="../../Thumbnails/mobileActiveLink.png" /><span class="mobileSBLinkText">WORK</span></a>
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">ABOUT</span></a>
+            <a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="mobileSBLink"><span class="mobileSBLinkText">RESUME</span></a>
+            <a href="mailto:dantimko1@gmail.com" class="mobileSBLink"><span class="mobileSBLinkText">CONTACT</span></a>
+        </div>
+    </div>
+
+    <div class="pageImageHeader">
+        <div class="pageImageHeaderBackground">
+            <img class="pageIHContent" src="background.jpg"/>
+        </div>
+    </div>
+
+    <div class="pageFloatingTitleBox">
+        <div class="pageTitleTextBox">
+            <span class="pageTitleText">
+                <span>
+                    ASTEROIDS
+                </span>
+            </span>
+        </div>
+
+        <div class="pTLine"></div>
+        <div class="titleButtons">
+            <a id="readMore" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        READ MORE
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/lampitosgames/Asteroids" id="viewCode" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        VIEW THE CODE
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="parallaxBody">
+        <a id="readMoreTarget"></a>
+        <div class="mainContent" style="top: 100%">
+            <div class="contentSpacer"></div>
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentBody">
+                <div class="cSpacer"></div>
+
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Building Asteroids
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTextFull animIn">
+                    Asteroids is a game I programmed as a challenge project to learn more about polygon collision detection.  Using various guides 
+                    and the separation axis theorem, I coded my own 2d physics engine via a language called Processing.  It is quite useful for games 
+                    and 2d visuals because of its ready-made update loop.  The game has powerups, accurate 2D polygon collision, momentum calculations, 
+                    screen wrapping, particle physics, and dynamic UI animation.  A lot went into Asteroids, and I’m immensely pleased with the end result.  
+                    You can watch a video of the game below, or download the executable <a href="https://drive.google.com/file/d/0B2De2euVaNQJYURoSUNJbXVhTHM/view?usp=sharing" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">here</a>.
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <iframe class="cPictureContent" width="1165" height="720" src="https://www.youtube.com/embed/Q0coIQoKGgc?rel=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Polygon Collision
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTextFull animIn">
+                    The biggest design challenge I faced was accurate 2D polygon collision.  Normally it would be fine to use simple circle collisions, but that can lead to frustrating 
+                    visual effects for the player.  If the ship isn’t touching an asteroid and you die, that is one of those moments that makes you dislike the game.  It makes the controls 
+                    feel clunky and the game unpolished.  So for asteroids, accurate collisions were a must.
+                </div>
+                <br/>
+                <div class="cTextFull animIn">
+                    Polygon collision follows something called the Separation Axis Theorem (using vector math and linear algebra) to determine if a collision between two shapes is happening.  
+                    A far more in-depth and mathematically heavy guide can be found <a href="http://www.dyn4j.org/2010/01/sat/" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">here</a>, 
+                    but I’ll detail it briefly.  If you can draw a line between two objects, they are obviously not colliding.  But how does one find that line?  There are an infinite number 
+                    of lines, so the SAT describes a way of programmatically choosing the best lines to check.  These lines are found using the normal vectors to every edge of the polygons 
+                    (those at right angles to the edge).  To check, the polygons are both projected orthogonally onto the line.  If the projections don’t overlap, the shapes are not colliding 
+                    with one another.  The algorithm’s efficiency comes from the fact that if a separating line is found, the shapes are proved to be non-colliding and the algorithm can return 
+                    right away.  In this way, efficient polygon collision detection can be run.
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Game Features
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cItemHighlights">
+                    <div class="cIHLeftList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> 2D Polygon Collision </div>
+                            <div class="cIHItemDesc">
+                                Accurate 2D polygon collision using the Separation Axis Theorem ensures that there are no odd visual effects when asteroids collide.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Momentum-based Elastic Collisions </div>
+                            <div class="cIHItemDesc">
+                                Asteroids have mass based on size, bouncing off each other with accurate transfers of momentum. The ship also bounces off asteroids when shields are active.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+
+                        <div class="cIHItem cIHItem3 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Dynamic UI Animation </div>
+                            <div class="cIHItemDesc">
+                                The power-up UI animates dynamically.  Circle meters fill up based on points, smooth animation between powerup selections, and none of it breaks with rapid inputs.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL4"></div>
+                    </div>
+
+                    <div class="cIHRightList">
+                        <div class="cIHLine cIHL1"></div>
+
+                        <div class="cIHItem cIHItem1 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Powerup System </div>
+                            <div class="cIHItemDesc">
+                                Three different power-up abilities enable engaging gameplay. The Nuke destroys everything.  The shield softens blows.  The Laser shoots a beam, destroying things touched. 
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL2"></div>
+
+                        <div class="cIHItem cIHItem2 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Collision Wrapping </div>
+                            <div class="cIHItemDesc">
+                                Asteroids floating off one side will simultaneously be floating in from the opposite.  Collisions for the asteroid are detected at both positions.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL3"></div>
+
+                        <div class="cIHItem cIHItem3 animIn">
+                            <div class="cIHItemRedCenterLine"></div>
+                            <div class="cIHItemTitle"> Particle Engine </div>
+                            <div class="cIHItemDesc">
+                                Energy particles employ gravitation and forces efficiently enough for hundereds to be on screen at once.  All will slowly gravitate toward the player before being consumed.
+                            </div>
+                        </div>
+
+                        <div class="cIHLine cIHL4"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="copyright">Copyright © 2016 Daniel Timko</div>
+
+            <div class="contentSpacer"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="../../jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../../header.js"></script>
+    <script type="text/javascript" src="../../contentElements.js"></script>
+    <script type="text/javascript" src="../../button.js"></script>
+    <script type="text/javascript" src="../../utils.js"></script>
+    <script type="text/javascript" src="pagescript.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../lampitosgamesStyle.css" />
+    <script src="https://use.typekit.net/lgz1rrt.js"></script>
+</head>
+<body>
+    <div id="header">
+        <div id="headerHoverLine"></div>
+        <div id="siteTitle">
+            <span id="siteTitleText">LAMPITOSGAMES</span>
+        </div>
+        <div id="headerLinks">
+            <table class="headerLinksTable">
+                <tr class="headerLinkRow">
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">HOME</a></td>
+                    <td class="headerLinkCell"><a href="" id="headerLinkActive" class="headerLinkText">WORK</a></td>
+                    <td class="headerLinkCell"><a href="../.." class="headerLinkText">ABOUT</a></td>
+                    <td class="headerLinkCell"><a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="headerLinkText">RESUME</a></td>
+                    <td class="headerLinkCell"><a href="mailto:dantimko1@gmail.com" class="headerLinkText">CONTACT</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="mobileHeaderButton">
+            <div class="hamburgerButtonWrapper">
+                <div class="hamburgerButton">
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                    <div class="hamBar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileSidebar">
+        <div id="mobileLinks">
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">HOME</span></a>
+            <a href="" class="mobileSBLink mobileSBLinkActive"><img class="mSBLImage" src="../../Thumbnails/mobileActiveLink.png" /><span class="mobileSBLinkText">WORK</span></a>
+            <a href="../.." class="mobileSBLink"><span class="mobileSBLinkText">ABOUT</span></a>
+            <a href="https://docs.google.com/document/d/1_i5Kuef7ByQH_zhEK1aveBbx-VBZr1Qh-5-DgX-tvlA/edit?usp=sharing" class="mobileSBLink"><span class="mobileSBLinkText">RESUME</span></a>
+            <a href="mailto:dantimko1@gmail.com" class="mobileSBLink"><span class="mobileSBLinkText">CONTACT</span></a>
+        </div>
+    </div>
+
+    <div class="pageImageHeader">
+        <div class="pageImageHeaderBackground">
+            <img class="pageIHContent" src="background.jpg"/>
+        </div>
+    </div>
+
+    <div class="pageFloatingTitleBox">
+        <div class="pageTitleTextBox">
+            <span class="pageTitleText">
+                <span>
+                    DUNGEON GENERATION
+                </span>
+            </span>
+        </div>
+
+        <div class="pTLine"></div>
+        <div class="titleButtons">
+            <a id="readMore" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        READ MORE
+                    </span>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=t0gADX0qqZw" id="viewCode" class="dBoxButtonWrapper">
+                <div class="dBoxButtonWLine1"></div><div class="dBoxButtonWLine2"></div><div class="dBoxButtonWLine3"><div class="dBBHWLineRR"></div></div><div class="dBoxButtonWLine4"><div class="dBBHWLineBL"></div><div class="dBBHWLineBR"></div></div><div class="dBoxButtonWLine5"><div class="dBBHWLineLL"></div></div><div class="dBoxButtonRLine"><div class="dBBHRLine"></div></div>
+                <div class="dBoxButtonText">
+                    <span>
+                        WATCH VIDEO
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="parallaxBody">
+        <a id="readMoreTarget"></a>
+        <div class="mainContent" style="top: 100%">
+            <div class="contentSpacer"></div>
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentBody">
+                <div class="cSpacer"></div>
+                <div class="cTitle animIn">
+                    <div class="cTitleDash">//</div> Semi-Random Dungeon Generation
+                </div>
+                <div class="cSpacer"></div>
+                <div class="cTextFull animIn">
+                    One of my current game development projects involves generating dungeon levels from a set of pre-built rooms.  I want to get users creating their own levels, so I needed a way 
+                    to easily import new parts of the dungeon.  Rooms can be created externally and dropped in the game folder.  Anything from large puzzles to simple hallways.  The generator takes all 
+                    of that information and strings rooms together to create a floor of the dungeon.  Rooms can be given spawn rarity, any size, and any number of doorways.  All of this was done in 
+                    GameMaker, and seeing as it is an active project that I want to sell eventually, I'm not going to be providing the source code.  However, here is a video explanation I created of how 
+                    it all works:
+                </div>
+
+                <div class="cSpacer"></div>
+
+                <div class="cPictureFrame animIn">
+                    <div class="cPicture">
+                        <iframe class="cPictureContent" width="1165" height="720" src="https://www.youtube.com/embed/t0gADX0qqZw?rel=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="cSpacer"></div>
+            </div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="separationLine"><div class="separationLineCenter"></div></div>
+
+            <div class="contentSpacer"></div>
+
+            <div class="copyright">Copyright © 2016 Daniel Timko</div>
+
+            <div class="contentSpacer"></div>
+        </div>
+    </div>
+</body>
+</html>
