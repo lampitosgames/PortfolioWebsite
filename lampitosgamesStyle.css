@@ -1,0 +1,547 @@
+﻿html {
+    background-color: #fcfcfc;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    visibility: hidden;
+}
+body {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+.mainContent {
+    position: relative;
+}
+.parallaxBody {
+    position: absolute;
+    top: 100%;
+    background-color: #fcfcfc;
+}
+
+/* PAGE HEADER */
+#header {
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    background-color: rgba(238, 238, 238, 0);
+    z-index: 19;
+    transition: background-color 0.25s, top 0.25s;
+}
+    /* Site title */
+    #siteTitle {
+        width: 412px;
+        height: 120px;
+        margin-left: 0px;
+        font-size: 36px;
+        font-weight: bold;
+        display: inline-block;
+    }
+    #siteTitleText {
+        position: absolute;
+        padding: 0px;
+        bottom: 20px;
+        cursor: pointer;
+        transition: color 200ms ease-in-out;
+    }
+    #siteTitleText:hover {
+        color: #777777;
+    }
+
+    /* Site Links */
+    #headerLinks {
+        width: 412px;
+        height: 120px;
+        position: absolute;
+        display: inline-block;
+        font-family: 'Source Sans Pro', sans-serif !important;
+        font-size: 16px;
+        color: #999999;
+        right: 0px;
+    }
+    #headerHoverLine {
+        position: absolute;
+        height: 3px;
+        background-color: rgba(216, 33, 50, 1.0);
+        z-index: 20;
+    }
+    .headerLinksTable {
+        position: absolute;
+        right: 0px;
+        bottom: 27px;
+    }
+    .headerLinkText {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+    }
+    .headerLinkCell {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+        transition: color 200ms;
+        cursor: pointer;
+    }
+    .headerLinkCell:hover {
+        color: #bbbbbb;
+    }
+    #mobileSidebar {
+        position: fixed;
+        width: 300px;
+        height: 150%;
+        background-color: #222222;
+        z-index: 9;
+    }
+        .mobileLinks {
+            position: absolute;
+            width: 100%;
+        }
+        .mobileSBLink {
+            width: 100%;
+            height: 50px;
+            border-top: 1px solid #444444;
+            position: relative;
+            display: block;
+            font-size: 16px;
+            color: #fcfcfc;
+            transition: background-color 150ms;
+        }
+        .mobileSBLink:hover {
+            background-color: rgba(216, 33, 50, 1.0);
+        }
+        .mobileSBLinkActive {
+            background-color: rgba(216, 33, 50, 1.0);
+        }
+        .mSBLImage {
+            position: absolute;
+            left: -30px;
+        }
+        .mobileSBLinkText {
+            text-decoration: none;
+            position: absolute;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            right: 25px;
+            top: 15px;
+        }
+    #mobileHeaderButton {
+        width: 34px;
+        height: 100%;
+        position: absolute;
+        right: 100px;
+        top: 0px;
+    }
+    /* Hamburger Button */
+	.hamburgerButtonWrapper {
+        position: absolute;
+		padding: 8px;
+		width: 34px;
+		height: 26px;
+        bottom: 20px;
+		text-align: center;
+	}
+	    /* the button itself */
+	    .hamburgerButton {
+		    opacity: 0.8;
+		    cursor: pointer;
+		    position: relative;
+		    width: 34px;
+		    height: 26px;
+		    padding: 4px;
+		    bottom: 10px;
+	    }
+	    /* bars */
+	    .hamBar {
+		    background-color: #fcfcfc;
+		    width: 34px;
+		    margin-top: 6px;
+		    height: 4px;
+		    border-radius: 4px;
+		    display: block;
+	    }
+
+/* COPYRIGHT */
+.copyright {
+    position: relative;
+    display: block;
+    font-weight: 300;
+    width: 100%;
+    font-size: 16px;
+    color: #aaaaaa;
+    text-align: center;
+}
+
+/* CONTENT SPACER */
+.contentSpacer {
+    width: 100%;
+    height: 100px;
+}
+
+/* SECTION SPACER */
+.separationLine {
+    width: 100%;
+    height: 1px;
+    background-color: #d1d1d1;
+}
+.separationLineCenter {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 2px;
+    background-color: rgba(216, 33, 50, 1.0);
+}
+
+.pageImageHeader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+}
+    .pageImageHeaderBackground {
+        position: relative;
+    }
+    .pageIHContent {
+        position: absolute;
+    }
+
+.pageFloatingTitleBox {
+    height: 300px;
+    position: fixed;
+}
+    .pageTitleTextBox {
+        text-align: center;
+        position: relative;
+        top: 0px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 400;
+        font-size: 72px;
+        color: #fcfcfc;
+    }
+    .pageTitleText {
+        display: block;
+    }
+    .pTLine {
+        position: absolute;
+        width: 0px;
+        height: 4px;
+        top: 120px;
+        background-color: #d82132;
+        display: block;
+    }
+    .titleButtons {
+        position: absolute;
+        bottom: 0px;
+        height: 150px;
+        width: 445px;
+    }
+
+/* A BODY SECTION OF CONTENT */
+.contentBody {
+    width: 100%;
+    position: relative;
+}
+    /* A Content Header / Title */
+    .cTitle {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-size: 48px;
+        color: #444444;
+        font-weight: 400;
+        cursor: pointer;
+    }
+    /* Decorative Header Element */
+    .cTitleDash {
+        position: relative;
+        display: inline;
+        font-weight: 900;
+        top: -3px;
+        margin-right: 40px;
+        color: rgba(216, 33, 50, 1.0);
+    }
+    /* In-content Spacer */
+    .cSpacer {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 75px;
+    }
+    /* A full-width text box */
+    .cTextFull {
+        position: relative;
+        display: block;
+        width: 85%;
+        text-indent: 50px;
+        font-size: 18px;
+        line-height: 30px;
+        color: #888888;
+    }
+    /* An image displayed in the content body */
+    .cPictureFrame {
+        position: relative;
+        display: block;
+        width: 100%;
+        overflow: hidden;
+    }
+        .cPicture {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .cPictureContent {
+            position: absolute;
+        }
+    /* Content Display */
+    .cItemHighlights {
+        width: 100%;
+        position: relative;
+        margin-top: 15px;
+        overflow: hidden;
+    }
+        .cIHLeftList {
+            width: 48%;
+            position: relative;
+            display: inline;
+            margin-right: 2%;
+            float: left;
+            text-align: right;
+        }
+        .cIHRightList {
+            width: 48%;
+            position: relative;
+            display: inline;
+            margin-left: 2%;
+            float: right;
+            text-align: left;
+        }
+        /* Individual item highlight elements */
+        .cIHLine {
+            position: relative;
+            display: block;
+            height: 1px;
+            margin-bottom: 1px;
+            background-color: #dedede;
+            transition: background-color 150ms linear;
+            -webkit-transition: background-color 150ms linear;
+        }
+        .cIHItem {
+            position: relative;
+            display: block;
+            cursor: pointer;
+        }
+            .cIHItemRedCenterLine {
+                position: absolute;
+                width: 2px;
+                height: 16%;
+                top: 42%;
+                background-color: rgba(216, 33, 50, 1.0);
+            }
+            .cIHItemTitle {
+                position: relative;
+                display: block;
+                font-size: 20px;
+                font-weight: 600;
+                color: #2a2a2a;
+                padding-top: 35px;
+                padding-left: 35px;
+                padding-right: 35px;
+                padding-bottom: 5px;
+            }
+            .cIHItemDesc {
+                position: relative;
+                display: block;
+                font-size: 16px;
+                line-height: 24px;
+                color: #888888;
+                padding-top: 5px;
+                padding-left: 35px;
+                padding-right: 35px;
+                padding-bottom: 35px;
+            }
+
+/* SITE CONTENT DISPLAY */
+#displayBody {
+    width: 100%;
+    position: relative;
+}
+    /* Individual display box */
+    .displayBox {
+        position: absolute;
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.5);
+	    overflow: hidden;
+    }
+    /* Background wrapper */
+    .displayBoxBackground {
+	    position: relative;
+        transition: top 300ms, left 300ms, width 300ms, height 300ms;
+    }
+    /* Background content */
+    .displayBoxBackContent {
+	    position: absolute;
+        transition: top 300ms, left 300ms, width 300ms, height 300ms;
+    }
+    /* DISPLAY BOX DESCRIPTION */
+    .dBoxDescription {
+	    position: absolute;
+	    width: 100%;
+	    height: 60%;
+	    background-color: rgba(216, 33, 50, 0.8);
+	    color: #fcfcfc;
+    }
+        /* Display box title */
+        .dBoxDescTitle {
+	        position: relative;
+            display: block;
+	        left: 0px;
+	        top: 0px;
+	        font-weight: bold;
+	        font-size: 18px;
+            text-align: center;
+	        padding-top: 5%;
+	        padding-left: 12%;
+	        padding-right: 12%;
+        }
+        /* Line separating the title and the description */
+        .dBoxDescLine {
+            position: relative;
+            display: block;
+            top: 0px;
+            margin-left: auto;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            width: 50px;
+            height: 2px;
+            background-color: rgba(252, 252, 252, 0.9);
+        }
+        /* Description */
+        .dBoxDescBody {
+	        position: absolute;
+	        display: block;
+	        padding-left: 12%;
+	        padding-right: 12%;
+            text-align: center;
+	        font-weight: 300;
+	        font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif !important;
+        }
+    /* Link that the display box goes to */
+    .linkSpan {
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+    /* Social links are display boxes without buttons and descriptions */
+    .socialLink {
+        visibility: visible;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+    /* DISPLAY BOX BUTTON */
+    .dBoxButtonWrapper {
+        position: absolute;
+	    overflow: visible;
+    }
+        /* Text inside the button */
+        .dBoxButtonText {
+            position: absolute;
+            color: #fcfcfc;
+            font-family: "Source Sans Pro", sans-serif !important;
+            font-weight: 400;
+            font-size: 16px;
+	        background-color: rgba(255, 255, 255, 0.01);
+	        z-index: 3;
+	        cursor: pointer;
+        }
+        /* Animated lines around the edges of the button */
+        .dBoxButtonWLine1 {
+            position: absolute;
+	        overflow: hidden;
+        }
+        .dBoxButtonWLine2 {
+            position: absolute;
+	        overflow: hidden;
+        }
+        .dBoxButtonWLine3 {
+            position: absolute;
+	        overflow: hidden;
+        }
+        .dBoxButtonWLine4 {
+            position: absolute;
+	        overflow: hidden;
+        }
+        .dBoxButtonWLine5 {
+            position: absolute;
+	        overflow: hidden;
+        }
+        .dBoxButtonRLine {
+            position: absolute;
+	        overflow: visible;
+	        z-index: 4;
+        }
+        .dBBHRLine {
+	        transition: width 75ms, left 75ms;
+	        transition-timing-function: ease-in;
+        }
+        .dBBHWLineLL {
+	        width: 110%;
+	        transition: top 50ms;
+	        transition-timing-function: linear;
+        }
+        .dBBHWLineRR {
+	        width: 110%;
+	        transition: top 50ms;
+	        transition-timing-function: linear;
+        }
+        .dBBHWLineBL {
+	        transition: left 50ms;
+	        transition-timing-function: ease-out;
+        }
+        .dBBHWLineBR {
+	        transition: left 50ms;
+	        transition-timing-function: ease-out;
+        }
+
+
+/* ELEMENTS THAT ANIMATE INTO VIEW */
+.animIn {
+    opacity: 1.0;
+    top: 0px;
+}
+.animIn.start {
+    -webkit-animation: fadeUp 0.75s ease-out;
+	   -moz-animation: fadeUp 0.75s ease-out;
+	     -o-animation: fadeUp 0.75s ease-out;
+	        animation: fadeUp 0.75s ease-out;
+}
+@-moz-keyframes fadeUp {
+    0% {
+        top: 50px;
+        opacity: 0.0;
+    }
+
+    100% {
+        top: 0px;
+        opacity: 1.0
+    }
+}
+@-webkit-keyframes fadeUp {
+    0% {
+        top: 50px;
+        opacity: 0.0;
+    }
+
+    100% {
+        top: 0px;
+        opacity: 1.0
+    }
+}
