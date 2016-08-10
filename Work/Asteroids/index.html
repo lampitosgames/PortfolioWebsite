@@ -105,9 +105,9 @@
 
                 <div class="cTextFull animIn">
                     Asteroids is a game I programmed as a challenge project to learn more about polygon collision detection.  Using various guides 
-                    and the separation axis theorem, I coded my own 2d physics engine via a language called Processing.  It is quite useful for games 
-                    and 2d visuals because of its ready-made update loop.  The game has powerups, accurate 2D polygon collision, momentum calculations, 
-                    screen wrapping, particle physics, and dynamic UI animation.  A lot went into Asteroids, and I’m immensely pleased with the end result.  
+                    and the separation axis theorem, I coded my own 2D physics engine via a language called Processing.  It is quite useful for games 
+                    and 2D visuals because of its ready-made update loop.  The game has powerups, accurate 2D polygon collision, momentum calculations, 
+                    screen wrapping, particle physics, and dynamic UI animation.  I put a lot of hard work into Asteroids and I’m immensely pleased with the end result.  
                     You can watch a video of the game below, or download the executable <a href="https://drive.google.com/file/d/0B2De2euVaNQJYURoSUNJbXVhTHM/view?usp=sharing" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">here</a>.
                 </div>
 
@@ -128,19 +128,19 @@
                 <div class="cSpacer"></div>
 
                 <div class="cTextFull animIn">
-                    The biggest design challenge I faced was accurate 2D polygon collision.  Normally it would be fine to use simple circle collisions, but that can lead to frustrating 
-                    visual effects for the player.  If the ship isn’t touching an asteroid and you die, that is one of those moments that makes you dislike the game.  It makes the controls 
-                    feel clunky and the game unpolished.  So for asteroids, accurate collisions were a must.
+                    The biggest design challenge I faced was accurate 2D polygon collision.  Normally I could use simple circle collisions for this game, but doing so would lead to frustrating 
+                    visual effects for the player.  The ship could explode even if no asteroids appeared to be colliding with it.  That sort of thing is something that makes people dislike the game. It makes the controls 
+                    feel clunky and the game unpolished.  So for asteroids, I absolutely needed accurate collisions.
                 </div>
                 <br/>
                 <div class="cTextFull animIn">
                     Polygon collision follows something called the Separation Axis Theorem (using vector math and linear algebra) to determine if a collision between two shapes is happening.  
                     A far more in-depth and mathematically heavy guide can be found <a href="http://www.dyn4j.org/2010/01/sat/" style="text-decoration: none; font-family: inherit; font-weight: inherit; font-size: inherit; color: #d82132">here</a>, 
-                    but I’ll detail it briefly.  If you can draw a line between two objects, they are obviously not colliding.  But how does one find that line?  There are an infinite number 
+                    but I’ll detail it briefly.  If you can draw a line between two objects, they are obviously not colliding.  But we need an algorithm to find that line. There are an infinite number 
                     of lines, so the SAT describes a way of programmatically choosing the best lines to check.  These lines are found using the normal vectors to every edge of the polygons 
                     (those at right angles to the edge).  To check, the polygons are both projected orthogonally onto the line.  If the projections don’t overlap, the shapes are not colliding 
-                    with one another.  The algorithm’s efficiency comes from the fact that if a separating line is found, the shapes are proved to be non-colliding and the algorithm can return 
-                    right away.  In this way, efficient polygon collision detection can be run.
+                    with one another.  The algorithm’s efficiency comes from the fact that if it finds a separating line, the shapes are proved to be non-colliding and the algorithm can return 
+                    right away.  In this way, we can run efficient polygon collision detection.
                 </div>
 
                 <div class="cSpacer"></div>

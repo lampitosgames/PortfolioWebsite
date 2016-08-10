@@ -115,8 +115,8 @@
                     The backend of the engine is where things get more complex.  I used a custom version of quad tree architecture to achieve resource-efficient mouse collision detection. 
                     Native MonoGame only provides the mouse location for the current frame.  The GameBoard class manages nearly everything.  On creation, it divides up the screen space 
                     using a quickly-searchable tree structure.  The smallest section of screen that fits into this tree holds an array of references to UI Boxes that overlap with it.  
-                    In the UIBox constructor, the object places itself into the GameBoard tree (ordered by layer and visibility).  This system is highly efficient to determine which objects 
-                    the mouse collides with.  Instead of checking thousands of UI objects every frame, the tree structure reduces that number to less than 10.
+                    In the UIBox constructor, the object places itself into the GameBoard tree (ordered by layer and visibility).  This system is highly efficient to determine with which objects 
+					the mouse collides.  Instead of checking thousands of UI objects every frame, the tree structure reduces that number to less than 10.
                 </div>
                 <br/>
                 <div class="cTextFull animIn">
