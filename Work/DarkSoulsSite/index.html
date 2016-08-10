@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dark Souls</title>
+	<meta charset="UTF-8">
+	<script src="jquery.js"></script>
+	<script src="jquery.mousewheel.js"></script>
+	<link type="text/css" rel="stylesheet" href="darksouls.css"/>
+</head>
+<body>
+	<div id="navbar">
+		<div id="navbarBackground"></div>
+		<div class="topButtonWrapper">
+			<div class="hamburgerButtonWrapper">
+				<div class="hamburgerButton">
+					<div class="hamBar"></div>
+					<div class="hamBar"></div>
+					<div class="hamBar"></div>
+				</div>
+			</div>
+		</div>
+		<div class="linkWrapper">
+			<a href="index.html"><div class="link">
+				<div class="linkCircle linkCircleActive"></div>
+				<div class="linkText linkTextActive">Dark Souls Home</div>
+				<div class="linkLine linkLineActive"></div>
+			</div></a>
+			<a href="LevelDesign.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Level Design</div>
+				<div class="linkLine"></div>
+			</div></a>
+			<a href="GameplayDesign.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Gameplay Design</div>
+				<div class="linkLine"></div>
+			</div></a>
+			<a href="Bibliography.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Bibliography</div>
+				<div class="linkLine"></div>
+			</div></a>
+		</div>
+	</div>
+	
+	<div id="scrollBarWrapper">
+		<div id="scrollBar">
+		
+		</div>
+	</div>
+	<div class="backImageWrapper parallax" data-parallaxWeight="2">
+		<img class="backImage" alt="Background image of an armored knight with a sword." src="images/armoredKnightBackground.jpg"/>
+	</div>
+	<div class="mainTitleBox parallax" data-parallaxWeight="5">
+		<img class="mainTitleBoxImage" alt="'Dark Souls' title logo." src="images/Logo.png"/>
+		<p class="mainTitleBoxSubtext">by Daniel Timko</p>
+	</div>
+	<div class="mainContentPane parallax" data-parallaxWeight="6">
+		<div class="articleWrapper">
+			<div class="titleBox">
+				<div class="title" style="position: relative; top: 0px;">
+					<div class="titleText">
+						Quick Links
+					</div>
+					<div class="titleLine">
+					</div>
+					<div class="titleSourcesLink">
+						<a href="Bibliography.html" class="titleLink">View Sources</a>
+					</div>
+					<div class="titleImageBox">
+						<img class="titleImage" alt="Image of Artorious." src="images/KapraSidebar.png"/>
+					</div>
+				</div>
+				<div class="title" style="position: relative; top: 100px;">
+					<div class="titleText">
+						About
+					</div>
+					<div class="titleLine"></div>
+					<div class="titleSourcesLink">
+						<a href="https://www.linkedin.com/in/lampitosgames" class="titleLink">LinkedIn</a>
+					</div>
+					<div style="width: 100%; position: relative; margin-top: 20px;">
+						<img class="titleImage" alt="Profile Picture of Daniel" style="width: 100%;" src="images/profile.jpg"/>
+					</div>
+				</div>
+			</div>
+			<div class="contentBox">
+				<div class="content">
+					<a href="LevelDesign.html"><div class="imageLinkCell">
+						<div class="topLinkLine"></div>
+						<div class="bottomLinkLine"></div>
+						<div class="leftLinkLine"></div>
+						<div class="rightLinkLine"></div>
+						<div class="imageLinkTitle" style="top: 41%;">Level<br/>Design</div>
+						<div class="imageOverlay"></div>
+						<img id="levDesignImage" class="imageLink" alt="A player on a thin ledge, representing level design." src="images/imageLinks/LevelDesign.jpg"/>
+					</div></a>
+					<a href="GameplayDesign.html"><div class="imageLinkCell">
+						<div class="topLinkLine"></div>
+						<div class="bottomLinkLine"></div>
+						<div class="leftLinkLine"></div>
+						<div class="rightLinkLine"></div>
+						<div class="imageLinkTitle" style="top: 41%;">Gameplay<br/>Design</div>
+						<div class="imageOverlay"></div>
+						<img id="charDesignImage" class="imageLink" alt="A knight huddled around a bonfire, representing character design." src="images/imageLinks/CharacterDesign.jpg"/>
+					</div></a>
+					<a href="Bibliography.html"><div class="imageLinkCell">
+						<div class="topLinkLine"></div>
+						<div class="bottomLinkLine"></div>
+						<div class="leftLinkLine"></div>
+						<div class="rightLinkLine"></div>
+						<div class="imageLinkTitle" style="top: 45%;">Bibliography</div>
+						<div class="imageOverlay"></div>
+						<img id="bibImage" class="imageLink" alt="Dragonslayer Ornstein image." src="images/imageLinks/Bibliography.jpg"/>
+					</div></a>
+				</div>
+				<div style=" margin-top: 97px;" class="content">
+					<div class="contentSubtitle">
+						About the Site
+					</div>
+					<div class="contentParagraph">
+						My name is Daniel, I work with a lot of code and UI design, and this is a website I created for my Intro to Interactive Media class.  The site is based around an action
+						adventure RPG called Dark Souls, a fantastic game built with fantastic design and forethought.  If you look around, you can read about why I love this game so much.
+					</div>
+					<div class="contentParagraph">
+						Web design is something I love doing and hope to continue throughout my entire career.  The only javascript API I used for this site is JQuery, the rest is custom code.  
+						Custom parallaxing code is not something I see very often, so I decided it might be fun to try!  I was right, I had a blast, and it works seamlessly across browsers.
+					</div>
+				</div>
+			</div>
+			<div class="bumper">
+			</div>
+		</div>
+	</div>
+	
+	<script src="utils.js"></script>
+	<script src="darksouls.js"></script>
+	<script src="parallax.js"></script>
+	<script src="scroll.js"></script>
+</body>
+</html>

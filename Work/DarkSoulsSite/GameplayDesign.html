@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dark Souls</title>
+	<meta charset="UTF-8">
+	<script src="jquery.js"></script>
+	<script src="jquery.mousewheel.js"></script>
+	<link type="text/css" rel="stylesheet" href="darksouls.css"/>
+</head>
+<body>
+	<div id="navbar">
+		<div id="navbarBackground"></div>
+		<div class="topButtonWrapper">
+			<div class="hamburgerButtonWrapper">
+				<div class="hamburgerButton">
+					<div class="hamBar"></div>
+					<div class="hamBar"></div>
+					<div class="hamBar"></div>
+				</div>
+			</div>
+		</div>
+		<div class="linkWrapper">
+			<a href="index.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Dark Souls Home</div>
+				<div class="linkLine"></div>
+			</div></a>
+			<a href="LevelDesign.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Level Design</div>
+				<div class="linkLine"></div>
+			</div></a>
+			<a href="GameplayDesign.html"><div class="link">
+				<div class="linkCircle linkCircleActive"></div>
+				<div class="linkText linkTextActive">Gameplay Design</div>
+				<div class="linkLine linkLineActive"></div>
+			</div></a>
+			<a href="Bibliography.html"><div class="link">
+				<div class="linkCircle"></div>
+				<div class="linkText">Bibliography</div>
+				<div class="linkLine"></div>
+			</div></a>
+		</div>
+	</div>
+	
+	<div id="scrollBarWrapper">
+		<div id="scrollBar">
+		
+		</div>
+	</div>
+	<div class="backImageWrapper parallax" data-parallaxWeight="2">
+		<img class="backImage" alt="Background image of Knight Solaire." src="images/solaireBackground.jpg"/>
+	</div>
+	<div class="mainTitleBox parallax" data-parallaxWeight="5">
+		<p class="mainTitleBoxText">Gameplay Design</p>
+	</div>
+	<div class="mainContentPane parallax" data-parallaxWeight="6">
+		<div class="articleWrapper">
+			<div class="titleBox">
+				<div class="title" style="position: relative; top: 0px;">
+					<div class="titleText">
+						Gameplay Design
+					</div>
+					<div class="titleLine">
+					</div>
+					<div class="titleSourcesLink">
+						<a href="Bibliography.html" class="titleLink">View Sources</a>
+					</div>
+					<div class="titleImageBox">
+						<img class="titleImage" alt="Image of an armored knight." src="images/CharacterSidebar.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="contentBox">
+				<div class="content">
+					<div class="contentSubtitle">
+						Open stats system
+					</div>
+					<div class="contentParagraph">
+						"Dark Souls doesn't force the player to play the game in any particular way.  Want to play a heavily armored knight, a light-on-her-feet 
+						warrior, a mage, a priest, or all of the above?  Sure thing.  The game lets you use the style of hero that you feel most comfortable with." (Boyd, 2012)
+					</div>
+					<div class="contentParagraph">
+						If Dark Souls were a university, the player's major would be undeclared.  Sure you pick a few stats (or courses) at the beginning, but those choices act as
+						trial periods.  Over time, as you try different play styles, you are able to commit to the ones you like best.
+					</div>
+					<div class="contentParagraph">
+						Dark Souls relies heavily on the mechanic of souls.  You gain souls by killing enemies, with larger payouts for bigger baddies.  You can spend them in a 
+						variety of ways - to purchase new items and gear, to upgrade existing gear, or to level up your character.  Purchasing a level grants one stat point 
+						that you can put into any of the base stats.  Rolling a Priest?  Upgrade your faith.  Playing a Tank?  You’ll want some strength.  Want to play a Paladin?  
+						Then go half and half.  Any character can upgrade any stat without limitation.  But stats don’t merely improve your character’s attributes, they also 
+						increase the scale with which weapons deal damage.
+					</div>
+					<br/>
+					<br/>
+					<div class="contentSubtitle">
+						The weapon system
+					</div>
+					<div class="contentParagraph">
+						Dark Souls' weapon system is unique and peculiar.  For starters, each class of weapon comes with different attack patterns, animations, and attack speeds.  
+						Each weapon class feels different; each has a different weight.  Sword swings may bounce off the narrow sewer walls, but a thrusting weapon with minimal 
+						horizontal movement (a spear) is perfect for the occasion.  Weapon damage scales with stat points.  In each weapon class, you'll usually find at least one 
+						weapon for each stat.  And to add fuel to the complexity fire, you can upgrade weapons to scale with a different stat entirely.  Dark Souls is able to put 
+						all of this together to form one of the deepest and most engaging sets of fighting mechanics ever devised.
+					</div>
+					<br/>
+					<br/>
+					<div class="contentSubtitle">
+						The bonfire mechanic
+					</div>
+					<div class="contentParagraph">
+						But what happens when you fail and inevitably die?  This is a hard game, after all.  There are bonfires scattered throughout the different areas.  Bonfires 
+						are safe-havens.  They serve as respawn points, level up vendors, and reset buttons.  That last item might sound a bit odd, but bear with me.  When you 
+						rest, every enemy in the game (except bosses) resets health, location, and aggro status.  This affords ample opportunity to learn how the surrounding area 
+						works.  Monsters respawn with perfect regularity as you die and reset bonfires.  To get far in Dark Souls, you must understand your enemies.  This is daunting 
+						at first because every enemy type (and there are hundreds) have different attack patterns, different animations, and different AI.  There is no "One Size 
+						Fits All" solution to this game.  An attack style might absolutely decimate rabid dogs but be worthless against crystalline giants.  Each area has a spattering
+						of different enemies which keeps the game feeling alive and compelling.
+					</div>
+				</div>
+				<div class="seperationLine">
+				</div>
+			</div>
+			<div class="bumper">
+			</div>
+		</div>
+	</div>
+	
+	<script src="utils.js"></script>
+	<script src="darksouls.js"></script>
+	<script src="parallax.js"></script>
+	<script src="scroll.js"></script>
+</body>
+</html>

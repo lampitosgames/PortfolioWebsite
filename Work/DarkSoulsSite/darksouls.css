@@ -1,0 +1,373 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin+Condensed:400,700);
+@font-face {
+	font-family: 'Optimus Princeps';
+	src: url('./OptimusPrinceps.eot');
+	src: local('OptimusPrinceps'), url('./OptimusPrinceps.woff') format('woff'), url('./OptimusPrinceps.ttf') format('truetype');
+}
+html,body {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	background: #000000;
+	font-family: 'Cabin Condensed', sans-serif;
+	height: 100%;
+}
+/* Links */
+a {
+	color: inherit;
+}
+.inTextLink {
+	color: #AD382B;
+	text-decoration: none;
+	transition: all 150ms ease-out;
+}
+.inTextLink:hover {
+	color: #DB4F40;
+}
+/** Background parallax **/
+	/** Background Image Wrapper **/
+	.backImageWrapper {
+		position: absolute;
+		z-index: 0;
+		width: 1920px;
+		height: 1200px;
+	}
+	/** Background Image, scaled in javascript **/
+	.backImage {
+		width: 100%;
+		height: 100%;
+	}
+
+/** Class defining an element as having parallax.  Parallaxing is relative to the parent element's scrolling properties (basically, the parallax values stack) **/
+.parallax {
+	top: 0px;
+}
+/** Page title **/
+.mainTitleBox {
+	position: absolute;
+	left: 8.5%;
+	width: 40%;
+	z-index: 3;
+	opacity: 1.0;
+}
+.mainTitleBoxText {
+	width: 100%;
+	position: relative;
+	font-family: 'Optimus Princeps', serif;
+	color: #626262;
+	left: 50px;
+	font-size: 72pt;
+}
+.mainTitleBoxImage {
+	width: 100%;
+	position: relative;
+}
+.mainTitleBoxSubtext {
+	margin-left: 57.5%;
+	margin-right: 5px;
+	margin-top: -4%;
+	font-size: 18px;
+	font-family: 'Optimus Princeps', serif;
+	color: #626262;
+	position: relative;
+}
+/** Main article **/
+	/** Wrapper for the article **/
+	.mainContentPane {
+		overflow: visible;
+		position: absolute;
+		background-color: #F0F0F0;
+		color: #626262;
+		z-index: 4;
+		width: 100%;
+		opacity: 1.0;
+	}
+	/** Inner wrapper for the article.  Keeps the width static at 1024px **/
+	.articleWrapper {
+		position: relative;
+		margin-top: 200px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 75%;
+	}
+	/** Title box holding titles for text sections **/
+	.titleBox {
+		position: absolute;
+		margin-top: 0px;
+		margin-left: 0%;
+		width: 20%;
+		text-align: left;
+		font-family: 'Optimus Princeps', serif;
+		color: #3B3B3B;
+		font-size: 24pt;
+		font-weight: 700;
+		letter-spacing: 2px;
+	}
+	/** Title box line seperating the title and the link to sources **/
+	.titleLine {
+		background-color: #A3A3A3;
+		width: 100%;
+		height: 1px;
+		margin-top: 11px;
+		margin-bottom: 6px;
+		text-indent: 20px;
+	}
+	/** Title box link to sources **/
+	.titleLink {
+		color: #AD382B;
+		text-decoration: none;
+		font-size: 12pt;
+		font-family: 'Cabin Condensed', sans-serif;
+		text-indent: 20px;
+		transition: all 150ms ease-out;
+	}
+	.titleLink:hover {
+		color: #DB4F40;
+	}
+	.titleImageBox {
+		position: relative;
+		margin-top: 20%;
+	}
+	.titleImage {
+		position: relative;
+		text-align: right;
+		width: 800px;
+	}
+	/** Content box holding the body of the text **/
+	.contentBox {
+		position: absolute;
+		margin-left: 24%;
+		width: 76%;
+	}
+	/** Subtitle for the content **/
+	.contentSubtitle {
+		top: -5px;
+		font-weight: bold;
+		position: relative;
+		font-size: 18pt;
+		color: #3B3B3B;
+		line-height: 1.5;
+	}
+	/** Text paragraph **/
+	.contentParagraph {
+		font-size: 14pt;
+		line-height: 1.5;
+		margin-top: 10px;
+		text-indent: 30px;
+	}
+	/** Bottom whitespace bumper so that parallax works properly **/
+	.bumper {
+		width: 100%;
+		height: 400px;
+	}
+
+/* Image Links on the homepage */
+	.imageLinkCell {
+		width: 31%;
+		height: 734px;
+		margin-left: 1%;
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		text-align: center;
+	}
+	.imageLink {
+		position: relative;
+	}
+	.topLinkLine {
+		position: absolute;
+		top: 20px;
+		width: 88%;
+		left: 6%;
+		height: 2px;
+		background-color: #F0F0F0;
+		z-index: 11;
+		opacity: 0.8;
+	}
+	.bottomLinkLine {
+		position: absolute;
+		top: 712px;
+		width: 88%;
+		left: 6%;
+		height: 2px;
+		background-color: #F0F0F0;
+		z-index: 11;
+		opacity: 0.8;
+	}
+	.leftLinkLine {
+		position: absolute;
+		top: 22px;
+		width: 2px;
+		left: 6%;
+		height: 690px;
+		background-color: #F0F0F0;
+		z-index: 11;
+		opacity: 0.8;
+	}
+	.rightLinkLine {
+		position: absolute;
+		top: 22px;
+		width: 2px;
+		float: right;
+		right: 6%;
+		height: 690px;
+		background-color: #F0F0F0;
+		z-index: 11;
+		opacity: 0.8;
+	}
+	.imageLinkTitle {
+		position: absolute;
+		color: #F0F0F0;
+		z-index: 11;
+		line-height: 1.5;
+		font-size: 28pt;
+		font-family: 'Optimus Princeps', serif;
+		width: 100%;
+		text-align: center;
+	}
+	.imageOverlay {
+		position: absolute;
+		background-color: #000000;
+		opacity: 0.5;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		cursor: pointer;
+		transition: all 300ms ease-out;
+	}
+	.imageOverlay:hover {
+		opacity: 0;
+	}
+/* The Navbar */
+	/** Wrapper for the sidebar **/
+	#navbar {
+		z-index: 10;
+		position: absolute;
+		left: 0px;
+		width: 400px;
+		height: 100%;
+		overflow: hidden;
+		padding-right: 50px;
+	}
+	
+	/** The slide-in background **/
+	#navbarBackground {
+		position: absolute;
+		width: 400px;
+		height: 100%;
+		background-color: #252621;
+		transition: all 300ms ease-out;
+	}
+
+	/** wraps the hamburger button **/
+	.topButtonWrapper {
+		margin-top: 50px;
+		margin-left: auto;
+		margin-right: 50px;
+		vertical-align: top;
+		border-spacing: 10px;
+		text-align: center;
+		display: table;
+		z-index: 11;
+	}
+	/** Hamburger Button! **/
+		/** Wrapper **/
+		.hamburgerButtonWrapper {
+			padding: 8px;
+			width: 34px;
+			height: 26px;
+			display: table-cell;
+			text-align: center;
+			transition: all 300ms ease-out;
+		}
+		/** the button itself **/
+		.hamburgerButton {
+			opacity: 0.8;
+			cursor: pointer;
+			position: relative;
+			width: 41px;
+			height: 34px;
+			padding: 4px;
+			bottom: 10px;
+			transition: all 300ms ease-out;
+		}
+		/** bars **/
+		.hamBar {
+			background-color: #252621;
+			width: 34px;
+			margin-top: 6px;
+			margin-left: 4px;
+			height: 4px;
+			border-radius: 2px;
+			display: block;
+		}
+	/** Wrapper for the page links **/
+	.linkWrapper {
+		font-family: 'Cabin Condensed', sans-serif;
+		font-size: 18pt;
+		color: #e2e0dc;
+		width: 300px;
+		left: 500px;
+		position: relative;
+		transition: all 300ms ease-out;
+	}
+	/** Wrapper for individual links **/
+	.link {
+		position: relative;
+		cursor: pointer;
+		height: 30px;
+		margin-top: 70px;
+		background-color: rgba(255, 255, 255, 0.001);
+	}
+	/** Bullet point **/
+	.linkCircle {
+		border-radius: 50%;
+		position: absolute;
+		opacity: 0.8;
+		bottom: 4px;
+		left: 264px;
+		width: 6px;
+		height: 6px;
+		border: 1.5px solid #e2e0dc;
+		transition: all 100ms linear;
+	}
+	/** Text on each link **/
+	.linkText {
+		position: absolute;
+		text-align: right;
+		width: 246px;
+		opacity: 0.8;
+		bottom: -3px;
+		font-family: 'Optimus Princeps', serif;
+		transition: all 150ms ease-in-out;
+	}
+	/** Line below the link **/
+	.linkLine {
+		position: absolute;
+		left: 264px;
+		opacity: 0.8;
+		bottom: -4px;
+		height: 2px;
+		width: 8px;
+		background-color: #e2e0dc;
+		transition: all 250ms ease-out;
+	}
+		
+/* Scroll Bar */
+	/** Wrapper for the scrollbar **/
+	#scrollBarWrapper {
+		position: absolute;
+		z-index: 10;
+		height: 100%;
+		width: 10px;
+	}
+	/** The scrollbar itself **/
+	#scrollBar {
+		background-color: #626262;
+		opacity: 0.7;
+		position: relative;
+		height: 200px;
+		width: 10px;
+		cursor: n-resize;
+		border-radius: 5px;
+	}
