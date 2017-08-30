@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+	<title>Template</title>
+	<style type="text/css">
+	canvas{
+		border:1px solid gray;
+	}
+	@font-face {
+		font-family: 'Cabin', sans-serif;
+		src: url('https://fonts.googleapis.com/css?family=Cabin');
+	}
+	</style>
+	<script>
+		'use strict';
+		//Bind init to the load event
+		window.onload = init;
+
+		function init(){
+			//Get canvas
+			let canvas = document.querySelector('canvas');
+			let ctx = canvas.getContext('2d');
+
+			//Set the background
+			ctx.fillStyle = '#151718';
+			ctx.fillRect(0,0,650,480);
+			//Draw my name
+			ctx.font = "60pt Cabin";
+			ctx.fillStyle = '#E6BC37';
+			ctx.textAlign = "center";
+			ctx.textBaseline = "middle";
+			ctx.fillText('Daniel Timko',320,180);
+			//Draw the class number
+			ctx.fillStyle = '#66D9EF';
+			ctx.font = "32pt Cabin";
+			ctx.fillText('IGME 330', 192, 285);
+			//Draw a separator line
+			ctx.strokeStyle = "#F8E9C2";
+			ctx.lineWidth = 7;
+			ctx.beginPath();
+			ctx.moveTo(104, 240);
+			ctx.lineTo(150, 240);
+			ctx.closePath();
+			ctx.stroke();
+			//Draw a long vertical line
+			ctx.lineWidth = 3;
+			ctx.beginPath();
+			ctx.moveTo(50, 0);
+			ctx.lineTo(50, 480);
+			ctx.closePath();
+			ctx.stroke();
+			//Draw a sidebar rectangle
+			ctx.fillStyle = "#1C1F20";
+			ctx.fillRect(0, 0, 50, 480);
+			//Draw a bunch of triangles
+			ctx.fillStyle = "#F92142";
+			for (let i=0; i<16; i++) {
+				ctx.beginPath();
+				ctx.moveTo(20, i*30);
+				ctx.lineTo(25, i*30+7);
+				ctx.lineTo(15, i*30+7);
+				ctx.fill();
+				ctx.closePath();
+			}
+		}
+	</script>
+</head>
+<body>
+	<canvas width="640" height="480">
+		Get a real browser!
+		<!-- The user will only see the above text if their browser is older and doesn't support <canvas> -->
+	</canvas>
+</body>
+</html>
