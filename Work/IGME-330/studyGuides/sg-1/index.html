@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Canvas 1</title>
+	<style type="text/css">
+	body{
+		background: #dddddd;
+	}
+
+	canvas{
+		background: #ffffff;
+		cursor: pointer;
+		box-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+	}
+
+	</style>
+
+	<script>
+	"use strict";
+	//Wait for page to load
+	window.onload = init;
+
+    //Called when all elements are loaded
+	function init(){
+        //When the user clicks the canvas, redraw
+        document.getElementById("canvas").addEventListener("mouseup", drawCanvas, false);
+        drawCanvas();
+    }
+
+    //Called to draw (or redraw) the page
+    function drawCanvas() {
+		//Get pointer to <canvas> element on page
+		let canvas = document.querySelector('canvas');
+		//Get pointer to "drawing context" and drawing API
+		let ctx = canvas.getContext('2d');
+
+        //Sky
+        ctx.fillStyle = "#ADD8E6";
+        ctx.fillRect(0, 0, 640, 300);
+        //Ground
+        ctx.fillStyle = "#66CD00";
+        ctx.fillRect(0, 300, 640, 180);
+        //Line to separate the sky and ground
+        ctx.strokeStyle = "#4B9600";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(0, 300);
+        ctx.lineTo(640, 300);
+        ctx.stroke();
+
+        //Draw some trees
+        for (let i = 0; i<20; i++) {
+            drawTree(rint(30, 75), rint(7, 20), rint(40, 150), rint(30, 100), 300, ctx);
+        }
+
+        /* SMILEY FACE */
+        //Face
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "yellow";
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(320, 240, 100, 0, Math.PI*2);
+        ctx.stroke();
+        ctx.fill();
+        //Smile
+        ctx.lineWidth = 15;
+        ctx.beginPath();
+        ctx.arc(320, 240, 75, Math.PI/8, Math.PI - (Math.PI/8));
+        ctx.stroke();
+        //Eyes
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(280, 200, 20, 0, Math.PI*2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(360, 200, 20, 0, Math.PI*2);
+        ctx.fill();
+
+        //Draw text explaining that trees are randomized
+        ctx.fillStyle = "Black";
+        ctx.font = "24px Arial";
+        ctx.fillText("Trees are randomized, click to redraw!", 20, 40);
+	}
+
+    //Get a random integer between these two values (inclusive);
+    function rint(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    //Draw a tree with a random location
+    function drawTree(trunkHeight, trunkWidth, leavesHeight, leavesWidth, groundSkyLineYPos, ctx) {
+        //Randomize location
+        let treeXPos = rint(50, 590);
+        let treeYPos = groundSkyLineYPos + rint(10, 150);
+        //Draw trunk
+        ctx.lineWidth = trunkWidth;
+        ctx.strokeStyle = "#53350A";
+        ctx.beginPath();
+        ctx.moveTo(treeXPos, treeYPos);
+        ctx.lineTo(treeXPos, treeYPos - trunkHeight);
+        ctx.stroke();
+        //Draw tree
+        ctx.strokeStyle = "#0D2104";
+        ctx.fillStyle = "#143306";
+        let leavesYPos = treeYPos - trunkHeight;
+        ctx.beginPath();
+        ctx.moveTo(treeXPos + leavesWidth/2, leavesYPos);
+        ctx.lineTo(treeXPos - leavesWidth/2, leavesYPos);
+        ctx.lineTo(treeXPos, leavesYPos - leavesHeight);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+    }
+	</script>
+
+</head>
+<body>
+	<canvas id="canvas" width="640" height="480">
+		Get a browser that supports Canvas!
+		<!-- The user will only see the above text if their browser is older and doesn't support <canvas> -->
+	</canvas>
+</body>
+</html>
