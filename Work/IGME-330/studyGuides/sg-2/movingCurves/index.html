@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <!--
+    A canvas example from:
+    https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html
+    Their coding style is different from what we'll be using in class - use our style, not theirs.
+    -->
+    <title>Simple curve example</title>
+    <style>
+        canvas {
+            background: #ffffff;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 10px;
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <script type="text/javascript">
+        var canvas, ctx
+
+        var pos1 = [5, 150];
+        var pos2 = [50, 300];
+        var vel1 = [3, 3];
+        var vel2 = [-3, -3];
+
+        function init() {
+            canvas = document.querySelector("canvas");
+            ctx = canvas.getContext("2d");
+            requestAnimationFrame(drawCurves);
+        }
+
+        function drawCurves() {
+            requestAnimationFrame(drawCurves);
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (pos1[0] <= 0 || pos1[0] >= canvas.width) {
+                vel1[0] *= -1;
+            }
+
+            if (pos1[1] <= 0 || pos1[1] >= canvas.height) {
+                vel1[1] *= -1;
+            }
+
+            if (pos2[0] <= 0 || pos2[0] >= canvas.width) {
+                vel2[0] *= -1;
+            }
+
+            if (pos2[1] <= 0 || pos2[1] >= canvas.height) {
+                vel2[1] *= -1;
+            }
+
+            pos1[0] += vel1[0];
+            pos1[1] += vel1[1];
+            pos2[0] += vel2[0];
+            pos2[1] += vel2[1];
+
+            ctx.lineWidth = "3";
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.quadraticCurveTo(pos1[0], pos1[1], canvas.width, canvas.height);
+            ctx.stroke();
+
+            ctx.strokeStyle = "red";
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.bezierCurveTo(pos1[0], pos1[1], pos2[0], pos2[1], canvas.width, canvas.height);
+            ctx.stroke();
+        }
+    </script>
+</head>
+
+<body onload="init()" style="background-color:#e0e0e0">
+    <canvas height="400" width="600">
+    </canvas>
+</body>
+
+</html>
