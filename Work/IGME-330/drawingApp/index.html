@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Canvas Paint App</title>
+	 <style>
+      body {
+         background: #eeeeee;
+         font-family: tahoma, verdana, sans serif;
+      }
+
+      #mainCanvas {
+         background: #ffffff;
+         position:absolute;
+         z-index: 0;
+         left: 10px;
+         top: 10px;
+         box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+      }
+
+
+       #controls {
+         position: absolute;
+          z-index: 2;
+         left: 25px;
+         top: 25px;
+      }
+
+      label{
+      	font-size: 12px;
+      	margin-right:0.75em;
+      }
+
+    </style>
+    <script>
+    /*
+    Stack class.  Used for history manipulation
+    */
+    //https://stackoverflow.com/questions/19570629/pass-all-the-values-from-an-array-into-a-function-as-parameters
+    //Push draw functions and the parameters used to the stack, then pop them later
+    class Stack {
+        constructor() {
+            this.values = [];
+            this.head = 0;
+            this.tail = 0;
+            this.count = 0;
+        }
+        push(item) {
+            this.values[this.tail] = item;
+            this.tail++;
+            this.count++;
+        }
+        pop() {
+            this.tail--;
+            this.count--;
+            return this.values[this.tail];
+        }
+    };
+    class DrawStep {
+        constructor(drawFunction, argList, strokeStyle, lineWidth, fillStyle) {
+            this.drawFunction = drawFunction;
+            this.argList = argList;
+            this.strokeStyle = strokeStyle;
+            this.lineWidth = lineWidth;
+            this.fillStyle = fillStyle;
+        }
+        draw(ctx) {
+            ctx.strokeStyle = this.strokeStyle;
+            ctx.lineWidth = this.lineWidth;
+            ctx.fillStyle = this.fillStyle;
+            if (Array.isArray(this.drawFunction)) {
+                for (var i=0; i<this.drawFunction.length; i++) {
+                    this.drawFunction[i].apply(ctx, this.argList[i]);
+                }
+            } else {
+                this.drawFunction.apply(ctx, this.argList);
+            }
+        }
+    }
+    </script>
+	<script>
+	"use strict";
+	window.onload = init;
+
+	// GLOBALS
+	var canvas,ctx;
+    var dragging=false;
+    var lineWidth;
+    var strokeStyle;
+    var fillStyle;
+
+    //Mouse stuff
+    var currentTool = "pencil";
+
+    var drawHistory = new Stack();
+
+	// CONSTANTS
+    var DEFAULT_LINE_WIDTH = 3;
+    var DEFAULT_STROKE_STYLE = "red";
+    var DEFAULT_FILL_STYLE = "red";
+
+
+	// FUNCTIONS
+	function init(){
+		// initialize some globals
+		canvas = document.querySelector('#mainCanvas');
+		ctx = canvas.getContext('2d');
+        lineWidth = DEFAULT_LINE_WIDTH;
+        strokeStyle = DEFAULT_STROKE_STYLE;
+        fillStyle = DEFAULT_FILL_STYLE;
+
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = strokeStyle;
+        ctx.fillStyle = fillStyle;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        canvas.onmousedown = mouseDown;
+        canvas.onmouseup = mouseUp;
+        canvas.onmousemove = mouseMove;
+        canvas.onmouseout = mouseOut;
+
+        clear();
+	}
+
+	function clear(){
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		drawGrid(ctx,'lightgray', 10, 10);
+	}
+
+    // EVENT VARIABLES
+    var pencilFunctionsList = [];
+    var pencilArgsList = [];
+    // EVENT FUNCTIONS
+    function mouseDown(e) {
+        dragging = true;
+        var mousePos = getMouse(e);
+        if (currentTool === "pencil") {
+            //Begin the path
+            pencilFunctionsList.push(ctx.beginPath);
+            pencilArgsList.push([]);
+            ctx.beginPath();
+            //Move to a position
+            pencilFunctionsList.push(ctx.moveTo);
+            pencilArgsList.push([mousePos.x, mousePos.y]);
+            ctx.moveTo(mousePos.x, mousePos.y);
+        }
+    }
+    function mouseUp(e) {
+        if (currentTool === "pencil") {
+            //Add stroke to the function list
+            pencilFunctionsList.push(ctx.stroke);
+            pencilArgsList.push([]);
+            //Create a new draw step for the history
+            var pencilStep = new DrawStep(pencilFunctionsList, pencilArgsList, strokeStyle, lineWidth, fillStyle);
+            drawHistory.push(pencilStep);
+            console.dir(pencilStep);
+            clear();
+            redrawStack();
+            pencilFunctionsList = [];
+            pencilArgsList = [];
+        }
+        dragging = false;
+    }
+    function mouseMove(e) {
+        if (!dragging) return;
+
+        var mousePos = getMouse(e);
+        if (currentTool === "pencil") {
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = lineWidth;
+            //Draw a line
+            pencilFunctionsList.push(ctx.lineTo);
+            pencilArgsList.push([mousePos.x, mousePos.y]);
+            ctx.lineTo(mousePos.x, mousePos.y);
+            //Stroke
+            ctx.stroke();
+        }
+    }
+    function mouseOut(e) {
+        mouseUp(e);
+    }
+
+	// UTILITY FUNCTIONS
+	/*
+	These utility functions do not depend on any global variables being in existence,
+	and produce no "side effects" such as changing ctx state variables.
+	They are "pure functions" - see: http://en.wikipedia.org/wiki/Pure_function
+	*/
+
+	// Function Name: getMouse()
+	// returns mouse position in local coordinate system of element
+	// Author: Tony Jefferson
+	// Last update: 3/1/2014
+	function getMouse(e){
+		var mouse = {}
+		mouse.x = e.pageX - e.target.offsetLeft;
+		mouse.y = e.pageY - e.target.offsetTop;
+		return mouse;
+	}
+
+	/*
+	Function Name: drawGrid()
+	Description: Fills the entire canvas with a grid
+	*/
+	function drawGrid(ctx, color, cellWidth, cellHeight){
+		// save the current drawing state as it existed before this function was called
+		ctx.save()
+		//set some drawing state variables
+		ctx.strokeStyle = color;
+		ctx.fillStyle = '#ffffff';
+		ctx.lineWidth = 0.5;
+		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		//vertical lines
+		for (var x = cellWidth + 0.5; x < ctx.canvas.width; x += cellWidth) {
+			ctx.beginPath();
+			ctx.moveTo(x, 0);
+			ctx.lineTo(x, ctx.canvas.height);
+			ctx.stroke();
+		}
+		//horizontal lines
+        for (var y = cellWidth + 0.5; y < ctx.canvas.height; y += cellWidth) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(ctx.canvas.width, y);
+            ctx.stroke();
+        }
+		// restore the drawing state
+		ctx.restore();
+	}
+
+    function redrawStack() {
+        clear();
+        for (var i=0; i<drawHistory.count; i++) {
+            drawHistory.values[i].draw(ctx);
+        }
+    }
+
+    function undo() {
+        drawHistory.pop();
+        redrawStack();
+    }
+    function redo() {
+        if (typeof drawHistory.values[drawHistory.count] === "undefined") {
+            console.log("nothing to redo");
+        } else {
+            var redoneItem = drawHistory.values[drawHistory.count];
+            drawHistory.push(redoneItem);
+            redoneItem.draw(ctx);
+        }
+    }
+	</script>
+</head>
+<body>
+	<canvas id="mainCanvas" width="700" height="500">
+	Get a real browser!
+	</canvas>
+
+	<div id="controls">
+		<label>Tool:
+			<select id="toolChooser">
+				<option value="toolPencil">Pencil</option>
+    		</select>
+    	</label>
+
+    	<label>Line Width:
+			<select id="lineWidthChooser">
+				<option value="1">1</option>
+				<option value="2">2</option>
+        		<option value="3" selected>3</option>
+        		<option value="4">4</option>
+				<option value="5">5</option>
+        		<option value="6">6</option>
+        		<option value="7">7</option>
+				<option value="8">8</option>
+        		<option value="9">9</option>
+        		<option value="10">10</option>
+    		</select>
+    	</label>
+
+
+    	<span><input id="clearButton" type="button" value="Clear"/></span>
+    </div>
+
+</body>
+</html>
