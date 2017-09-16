@@ -7,25 +7,40 @@
     <style>
         body {
             background: #eeeeee;
+            overflow: hidden;
             font-family: tahoma, verdana, sans serif;
+            padding: 0px;
         }
-
         #mainCanvas {
             background: #ffffff;
             position: absolute;
+            top: -10px;
+            left: -10px;
             z-index: 0;
-            left: 10px;
-            top: 10px;
-            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            width: 100vw;
+            height: 100vh;
         }
-
         #controls {
             position: absolute;
             z-index: 2;
-            left: 25px;
-            top: 25px;
+            padding: 10px 25px 10px 25px;
+            background-color: #fcfcfc;
+            border: 1px solid #999999;
         }
-
+        #keyBinds {
+            position: absolute;
+            z-index: 2;
+            background-color: #fcfcfc;
+            border: 1px solid #999999;
+            padding: 0px 10px 0px 10px;
+            top: 55px;
+            overflow: hidden;
+            transition: height 0.5s;
+            height: 50px;
+        }
+        #keyBinds:hover {
+            height: auto;
+        }
         label {
             font-size: 12px;
             margin-right: 0.75em;
@@ -34,44 +49,57 @@
     <script>
         /*
             Stack class.  Used for history manipulation
-            */
-        //https://stackoverflow.com/questions/19570629/pass-all-the-values-from-an-array-into-a-function-as-parameters
+        */
         //Push draw functions and the parameters used to the stack, then pop them later
         class Stack {
             constructor() {
+                //The array keeps items in it even if the count is reduced.
+                //This allows for the functionality of simply increasing the count
+                //to retrieve deleted items from the stack
                 this.values = [];
-                this.head = 0;
-                this.tail = 0;
                 this.count = 0;
             }
             push(item) {
-                this.values[this.tail] = item;
-                this.tail++;
+                this.values[this.count] = item;
                 this.count++;
+                //Since we're overriding any outstanding history, delete everything after this index
+                this.values.length = this.count;
             }
             pop() {
-                this.tail--;
+                if (this.count == 0) return false;
                 this.count--;
-                return this.values[this.tail];
+                return this.values[this.count];
             }
         };
+
+        /*
+            Class that represents a single history action and can re-draw it provided a canvas context.
+        */
         class DrawStep {
             constructor(drawFunction, argList, strokeStyle, lineWidth, fillStyle) {
+                //This can either be a single function or an array of functions to call in order
                 this.drawFunction = drawFunction;
+                //The draw function(s) parameters.  Either a single argument array, or an array of argument arrays.
                 this.argList = argList;
+                //Styling variables
                 this.strokeStyle = strokeStyle;
                 this.lineWidth = lineWidth;
                 this.fillStyle = fillStyle;
             }
+            //Draw contents with provided settings
             draw(ctx) {
                 ctx.strokeStyle = this.strokeStyle;
                 ctx.lineWidth = this.lineWidth;
                 ctx.fillStyle = this.fillStyle;
+                //If there are multiple drawing functions
                 if (Array.isArray(this.drawFunction)) {
+                    //Loop through them all and call them each
                     for (var i = 0; i < this.drawFunction.length; i++) {
+                        //Pass in the arguments and the required context
                         this.drawFunction[i].apply(ctx, this.argList[i]);
                     }
                 } else {
+                    //If there is only one function, call it with the proper arguments
                     this.drawFunction.apply(ctx, this.argList);
                 }
             }
@@ -83,7 +111,9 @@
 
         // GLOBALS
         var canvas, ctx;
-        var dragging = false;
+        var tempCanvas, tempCtx;
+
+        //Global styles
         var lineWidth;
         var strokeStyle;
         var fillStyle;
@@ -95,14 +125,26 @@
 
         // CONSTANTS
         var DEFAULT_LINE_WIDTH = 3;
-        var DEFAULT_STROKE_STYLE = "red";
-        var DEFAULT_FILL_STYLE = "red";
+        var DEFAULT_STROKE_STYLE = "black";
+        var DEFAULT_FILL_STYLE = "black";
 
 
         // FUNCTIONS
         function init() {
             // initialize some globals
+            //Get the canvas and have it be fullscreen
             canvas = document.querySelector('#mainCanvas');
+            canvas.setAttribute("width", canvas.offsetWidth);
+            canvas.setAttribute("height", canvas.offsetHeight);
+            //When the window resizes, also resize the canvas
+            window.addEventListener("resize", function() {
+                canvas.setAttribute("width", canvas.offsetWidth);
+                canvas.setAttribute("height", canvas.offsetHeight);
+                ctx = canvas.getContext('2d');
+                clear();
+                redrawStack();
+            });
+
             ctx = canvas.getContext('2d');
             lineWidth = DEFAULT_LINE_WIDTH;
             strokeStyle = DEFAULT_STROKE_STYLE;
@@ -114,22 +156,41 @@
             ctx.lineCap = "round";
             ctx.lineJoin = "round";
 
+            //Canvas events
             canvas.onmousedown = mouseDown;
             canvas.onmouseup = mouseUp;
             canvas.onmousemove = mouseMove;
             canvas.onmouseout = mouseOut;
 
+            //Control events
+            document.getElementById("lineWidthChooser").onchange = function(e) { lineWidth = e.target.value; };
+            document.getElementById("strokeStyleChooser").onchange = function(e) { strokeStyle = e.target.value; };
+            document.getElementById("clearButton").addEventListener("click", function(e) {
+                //Re-init the history
+                drawHistory = new Stack();
+                //Clear the canvas
+                clear();
+            })
+            document.getElementById("undoButton").addEventListener("click", undo);
+            document.getElementById("redoButton").addEventListener("click", redo);
+
+            //Keyboard shortcuts
+            canvas.addEventListener("keydown", keyBinds);
+
             clear();
         }
 
         function clear() {
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
             drawGrid(ctx, 'lightgray', 10, 10);
         }
 
         // EVENT VARIABLES
         var pencilFunctionsList = [];
         var pencilArgsList = [];
+        var dragging = false;
+
+
         // EVENT FUNCTIONS
         function mouseDown(e) {
             dragging = true;
@@ -147,16 +208,17 @@
         }
 
         function mouseUp(e) {
+            //If dragging got cancelled in some other way, don't do anything.
+            if (!dragging) return;
+
             if (currentTool === "pencil") {
-                //Add stroke to the function list
+                //Add stroke to the function list. We didn't add it before because it only needs to be called once
+                //when this pencil draw is repeated in the history.
                 pencilFunctionsList.push(ctx.stroke);
                 pencilArgsList.push([]);
                 //Create a new draw step for the history
-                var pencilStep = new DrawStep(pencilFunctionsList, pencilArgsList, strokeStyle, lineWidth, fillStyle);
-                drawHistory.push(pencilStep);
-                console.dir(pencilStep);
-                clear();
-                redrawStack();
+                drawHistory.push(new DrawStep(pencilFunctionsList, pencilArgsList, strokeStyle, lineWidth, fillStyle));
+                //Reset the pencil tool
                 pencilFunctionsList = [];
                 pencilArgsList = [];
             }
@@ -183,12 +245,24 @@
             mouseUp(e);
         }
 
-        // UTILITY FUNCTIONS
-        /*
-        These utility functions do not depend on any global variables being in existence,
-        and produce no "side effects" such as changing ctx state variables.
-        They are "pure functions" - see: http://en.wikipedia.org/wiki/Pure_function
-        */
+        function keyBinds(e) {
+            //If the control key is down
+            if (e.ctrlKey) {
+                //Switch between commands
+                switch (e.keyCode) {
+                    case 90:
+                        //Ctrl-z
+                        undo();
+                        break;
+                    case 89:
+                        //Ctrl-y
+                        redo();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         // Function Name: getMouse()
         // returns mouse position in local coordinate system of element
@@ -212,51 +286,70 @@
             ctx.strokeStyle = color;
             ctx.fillStyle = '#ffffff';
             ctx.lineWidth = 0.5;
-            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.fillRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
             //vertical lines
-            for (var x = cellWidth + 0.5; x < ctx.canvas.width; x += cellWidth) {
+            for (var x = cellWidth + 0.5; x < canvas.offsetWidth; x += cellWidth) {
                 ctx.beginPath();
                 ctx.moveTo(x, 0);
-                ctx.lineTo(x, ctx.canvas.height);
+                ctx.lineTo(x, canvas.offsetHeight);
                 ctx.stroke();
             }
             //horizontal lines
-            for (var y = cellWidth + 0.5; y < ctx.canvas.height; y += cellWidth) {
+            for (var y = cellWidth + 0.5; y < canvas.offsetHeight; y += cellWidth) {
                 ctx.beginPath();
                 ctx.moveTo(0, y);
-                ctx.lineTo(ctx.canvas.width, y);
+                ctx.lineTo(canvas.offsetWidth, y);
                 ctx.stroke();
             }
             // restore the drawing state
             ctx.restore();
         }
 
+        /*
+            Clears the canvas and re-draws the entire history.
+        */
         function redrawStack() {
+            //Clear the canvas
             clear();
+            //Loop through the history stack and redraw items.
             for (var i = 0; i < drawHistory.count; i++) {
                 drawHistory.values[i].draw(ctx);
             }
         }
 
+        /*
+            Undo a draw step
+            return bool: is there something else to pop off the stack?
+        */
         function undo() {
-            drawHistory.pop();
+            if (!drawHistory.pop()) {
+                //If popping failed, there's nothing to undo
+                return false;
+            }
+            //Redraw the history without the removed item
             redrawStack();
+            //Return a boolean to show if there are any other items on the stack
+            return drawHistory.count > 0;
         }
 
+        /*
+            Redo a draw step
+            return bool: are further redos possible (more items after the end of the stack)?
+        */
         function redo() {
-            if (typeof drawHistory.values[drawHistory.count] === "undefined") {
-                console.log("nothing to redo");
-            } else {
-                var redoneItem = drawHistory.values[drawHistory.count];
-                drawHistory.push(redoneItem);
-                redoneItem.draw(ctx);
-            }
+            //If there is nothing to redo, return
+            if (typeof drawHistory.values[drawHistory.count] === "undefined") return false;
+            //Re-draw the removed item, and 'add' it back to the stack by increasing the count.
+            drawHistory.values[drawHistory.count].draw(ctx);
+            drawHistory.count++;
+            //Return whether more redos are possible
+            return drawHistory.values[drawHistory.count] !== "undefined";
         }
     </script>
 </head>
 
 <body>
-    <canvas id="mainCanvas" width="700" height="500">
+    <canvas id="mainCanvas" tabindex='1'>
 	Get a real browser!
 	</canvas>
 
@@ -281,9 +374,37 @@
         		<option value="10">10</option>
     		</select>
     	</label>
+        <label>Line Color:
+			<select id="strokeStyleChooser">
+				<option value="black" selected>black</option>
+				<option value="silver">silver</option>
+        		<option value="gray">gray</option>
+        		<option value="white">white</option>
+				<option value="maroon">maroon</option>
+        		<option value="red">red</option>
+        		<option value="purple">purple</option>
+				<option value="fuchsia">fuchsia</option>
+        		<option value="green">green</option>
+        		<option value="lime">lime</option>
+        		<option value="olive">olive</option>
+        		<option value="yellow">yellow</option>
+        		<option value="navy">navy</option>
+        		<option value="blue">blue</option>
+        		<option value="teal">teal</option>
+        		<option value="aqua">aqua</option>
+    		</select>
+    	</label>
 
 
         <span><input id="clearButton" type="button" value="Clear"/></span>
+        <span><input id="undoButton" type="button" value="Undo"/></span>
+        <span><input id="redoButton" type="button" value="Redo"/></span>
+    </div>
+    <div id="keyBinds">
+        <p>Mouse over for keybinds</p>
+        <br/>
+        <p>ctrl-z: undo</p>
+        <p>ctrl-y: redo</p>
     </div>
 
 </body>
