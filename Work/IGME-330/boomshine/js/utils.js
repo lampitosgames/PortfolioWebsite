@@ -100,9 +100,8 @@ app.utils = {
      * From: Boomshine-ICE-start
      */
     fillText: function(string, x, y, css, color) {
-        let c = app.main.ctx;
+        let c = app.ctx;
         c.save();
-        // https://developer.mozilla.org/en-US/docs/Web/CSS/font
         c.font = css;
         c.fillStyle = color;
         c.fillText(string, x, y);
@@ -112,20 +111,21 @@ app.utils = {
      * Fill a circle
      */
     fillCircle: function(x, y, radius, fillColor) {
-        let c = app.main.ctx;
+        let c = app.ctx;
+        c.save();
         c.fillStyle = fillColor;
-        c.globalAlpha = 0.75;
         c.beginPath();
         c.arc(x, y, radius, 0, Math.PI*2);
         c.fill();
         c.globalAlpha = 1.0;
+        c.restore();
     },
     /**
      * Stroke a Circle
      * this sounds a little dirty 0_0
      */
     strokeCircle: function(x, y, radius, strokeColor, lineWidth) {
-        let c = app.main.ctx;
+        let c = app.ctx;
         c.save();
         c.beginPath();
         c.strokeStyle = strokeColor;
