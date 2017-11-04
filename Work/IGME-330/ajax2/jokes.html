@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>XHR XML Example</title>
+	<style>
+		*{
+			font-family:tahoma,verdana,sans-serif;
+		}
+	</style>
+	<script>
+
+	"use strict";
+
+	(function(){
+		window.onload = init;
+
+		function init(){
+			document.querySelector('#mybutton').onclick = loadData;
+		}
+
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			var allJokes =[];
+			xhr.onload = function(){
+                var section = document.createElement('section');
+                var h2Jokes = document.createElement('h2');
+                h2Jokes.textContent = 'Here are the jokes!';
+                section.appendChild(h2Jokes);
+                var xml = xhr.responseXML;
+                var allJokes = xml.querySelectorAll('joke');
+                for (var i=0; i<allJokes.length; i++) {
+                    var joke = allJokes[i];
+                    var question = joke.querySelector('question').firstChild.nodeValue;
+                    var answer = joke.querySelector('answer').firstChild.nodeValue;
+                    var rating = joke.getAttribute('rating');
+                    var div = document.createElement('div');
+                    div.classList.add('joke');
+                    var h3 = document.createElement('h3');
+                    h3.textContent = question;
+                    div.appendChild(h3);
+                    var p1 = document.createElement('p');
+                    var em = document.createElement('em');
+                    em.textContent = answer;
+                    p1.appendChild(em);
+                    div.appendChild(p1);
+                    var p2 = document.createElement('p');
+                    p2.textContent = 'Rating = ' + rating;
+                    div.appendChild(p2);
+                    section.appendChild(div);
+                }
+
+                var content = document.querySelector('#content');
+                content.innerHTML = "";
+                content.appendChild(section);
+			}
+
+			var url = "jokes-data.xml";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+
+
+
+	}())
+	</script>
+</head>
+<body>
+	<h1>Jokes!</h1>
+	<p><button id='mybutton'>Fetch Data</button></p>
+	<div id='content'></div>
+
+</body>
+</html>

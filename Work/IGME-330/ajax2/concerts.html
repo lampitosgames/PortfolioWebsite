@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>XHR XML Example</title>
+	<style>
+		*{
+			font-family:tahoma,verdana,sans-serif;
+		}
+	</style>
+	<script>
+
+	"use strict";
+
+	(function(){
+		window.onload = init;
+
+		function init(){
+			document.querySelector('#mybutton').onclick = loadData;
+		}
+
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			var allJokes =[];
+			xhr.onload = function(){
+                var section = document.createElement('section');
+                var h2Concerts = document.createElement('h2');
+                h2Concerts.textContent = 'Here are the concerts!';
+                section.appendChild(h2Concerts);
+
+                var xml = xhr.responseXML;
+                var allEvents = xml.querySelectorAll('event');
+                console.dir(allEvents);
+
+                for (var i=0; i<allEvents.length; i++) {
+                    var event = allEvents[i];
+
+                    var div = document.createElement('div');
+
+                    //title h3
+                    var h3 = document.createElement('h3');
+                    var title = event.querySelector('title').firstChild.nodeValue;
+                    h3.textContent = title;
+                    div.appendChild(h3);
+                    //city
+                    var p1 = document.createElement('p');
+                    var city = event.querySelector('city').firstChild.nodeValue;
+                    p1.textContent = city;
+                    div.appendChild(p1);
+                    //start date
+                    var p2 = document.createElement('p');
+                    var startDate = event.querySelector('startDate').firstChild.nodeValue;
+                    p2.textContent = startDate;
+                    div.appendChild(p2);
+                    //image
+                    var img = document.createElement('img');
+                    var images = event.querySelectorAll('image');
+                    var image;
+                    for (var j=0; j<images.length; j++) {
+                        if (images[j].getAttribute('size') == "extralarge") {
+                            if (images[j].firstChild != undefined) {
+                                image = images[j].firstChild.nodeValue;
+                                break;
+                            }
+                        }
+                    }
+
+                    img.src = image;
+                    div.appendChild(img);
+
+                    section.appendChild(div);
+                }
+
+                var content = document.querySelector('#content');
+                content.innerHTML = "";
+                content.appendChild(section);
+			}
+
+			var url = "last-fm-results.xml";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+
+
+
+	}())
+	</script>
+</head>
+<body>
+	<h1>Concerts!</h1>
+	<p><button id='mybutton'>Fetch Data</button></p>
+	<div id='content'></div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>XHR XML Example</title>
+	<style>
+		*{
+			font-family:tahoma,verdana,sans-serif;
+		}
+	</style>
+	<script>
+
+	"use strict";
+
+	(function(){
+		window.onload = init;
+
+		function init(){
+			document.querySelector('#mybutton').onclick = loadData;
+		}
+
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			var allMovies =[];
+			xhr.onload = function(){
+                var section = document.createElement('section');
+                var h2Movies = document.createElement('h2');
+                h2Movies.textContent = 'Here are the movies!';
+                section.appendChild(h2Movies);
+                var xml = xhr.responseXML;
+                var allMovies = xml.querySelectorAll('movie');
+                for (var i=0; i<allMovies.length; i++) {
+                    // var joke = allJokes[i];
+                    // var question = joke.querySelector('question').firstChild.nodeValue;
+                    // var answer = joke.querySelector('answer').firstChild.nodeValue;
+                    // var rating = joke.getAttribute('rating');
+                    // var div = document.createElement('div');
+                    // div.classList.add('joke');
+                    // var h3 = document.createElement('h3');
+                    // h3.textContent = question;
+                    // div.appendChild(h3);
+                    // var p1 = document.createElement('p');
+                    // var em = document.createElement('em');
+                    // em.textContent = answer;
+                    // p1.appendChild(em);
+                    // div.appendChild(p1);
+                    // var p2 = document.createElement('p');
+                    // p2.textContent = 'Rating = ' + rating;
+                    // div.appendChild(p2);
+                    // section.appendChild(div);
+
+                    var movie = allMovies[i];
+
+                    var div = document.createElement('div');
+                    //Movie name
+                    var h3 = document.createElement('h3');
+                    var title = movie.querySelector('title').firstChild.nodeValue;
+                    h3.textContent = title;
+                    div.appendChild(h3);
+
+                    //Actor
+                    var p1 = document.createElement('p');
+                    var actor = movie.querySelector('actor').firstChild.nodeValue;
+                    p1.textContent = "Main Actor: " + actor;
+                    div.appendChild(p1);
+
+                    //rating
+                    var p2 = document.createElement('p');
+                    var rating = movie.getAttribute('rating');
+                    p2.textContent = "Rating: " + rating;
+                    div.appendChild(p2);
+
+                    section.appendChild(div);
+                }
+
+                var content = document.querySelector('#content');
+                content.innerHTML = "";
+                content.appendChild(section);
+			}
+
+			var url = "movies.xml";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+
+
+
+	}())
+	</script>
+</head>
+<body>
+	<h1>Movies!</h1>
+	<p><button id='mybutton'>Fetch Data</button></p>
+	<div id='content'></div>
+
+</body>
+</html>

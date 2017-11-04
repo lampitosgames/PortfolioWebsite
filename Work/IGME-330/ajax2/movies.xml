@@ -1,0 +1,22 @@
+<movies>
+	<movie rating="5">
+        <title>Iron Man</title>
+        <actor>Robert Downey Jr.</actor>
+	</movie>
+	<movie rating="4">
+        <title>Iron Man 2</title>
+        <actor>Robert Downey Jr.</actor>
+	</movie>
+	<movie rating="2">
+        <title>Thor</title>
+        <actor>Chris Hemsworth</actor>
+	</movie>
+	<movie rating="4">
+        <title>Captain America: The First Avenger</title>
+        <actor>Chris Evans</actor>
+	</movie>
+	<movie rating="5">
+        <title>Marvel's The Avengers</title>
+        <actor>Samuel L Jackson</actor>
+	</movie>
+</movies>
