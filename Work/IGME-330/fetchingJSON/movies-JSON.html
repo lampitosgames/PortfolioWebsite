@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>XHR JSON Example</title>
+	<style>
+		*{
+			font-family:tahoma,verdana,sans-serif;
+		}
+
+		.movie{
+			border:1px solid black;
+			padding:5px;
+			margin-bottom:10px;
+		}
+	</style>
+	<script>
+	(function(){
+		"use strict";
+		window.onload = init;
+
+		function init(){
+			document.querySelector('#mybutton').onclick = loadData;
+		}
+
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function(){
+				// JSON.parse() converts a string to JSON.
+ 				var myJSON = JSON.parse( xhr.responseText );
+ 				var allMovies = myJSON.movies;
+				document.querySelector('#content').innerHTML = "There are " + allMovies.length + " jokes!";
+
+                let section = document.createElement('section');
+
+				for (let i=0; i<allMovies.length; i++) {
+                    let movie = allMovies[i];
+
+                    let div = document.createElement('div');
+                    div.classList.add('movie');
+
+                    let h3 = document.createElement('h3');
+                    h3.textContent = movie.title;
+                    div.appendChild(h3);
+
+                    for (let j=0; j<movie.actors.length; j++) {
+                        let para = document.createElement('p');
+                        let em = document.createElement('em');
+                        em.textContent = movie.actors[j];
+                        para.appendChild(em);
+                        div.appendChild(para);
+                    }
+
+                    let para2 = document.createElement('p');
+                    para2.textContent = movie.rating;
+
+                    div.appendChild(para2);
+
+                    section.appendChild(div);
+                }
+
+                let content = document.querySelector("#content");
+                content.innerHTML = "";
+                content.appendChild(section);
+			}
+
+			var url = "movies.json";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+	}())
+	</script>
+</head>
+<body>
+	<h1>Movies!</h1>
+	<p><button id='mybutton'>Fetch Data</button></p>
+	<div id='content'></div>
+
+</body>
+</html>

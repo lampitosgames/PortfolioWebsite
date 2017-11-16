@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>XHR JSON Example</title>
+	<style>
+		*{
+			font-family:tahoma,verdana,sans-serif;
+		}
+
+		.joke{
+			border:1px solid black;
+			padding:5px;
+			margin-bottom:10px;
+		}
+	</style>
+	<script>
+	(function(){
+		"use strict";
+		window.onload = init;
+
+		function init(){
+			document.querySelector('#mybutton').onclick = loadData;
+		}
+
+		function loadData(){
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function(){
+				// JSON.parse() converts a string to JSON.
+ 				var myJSON = JSON.parse( xhr.responseText );
+ 				var allJokes = myJSON.jokes;
+				document.querySelector('#content').innerHTML = "There are " + allJokes.length + " jokes!";
+
+                let section = document.createElement('section');
+
+				for (let i=0; i<allJokes.length; i++) {
+                    let joke = allJokes[i];
+
+                    let div = document.createElement('div');
+                    div.classList.add('joke');
+
+                    let h3 = document.createElement('h3');
+                    h3.textContent = joke.q;
+                    div.appendChild(h3);
+
+                    let para1 = document.createElement('p');
+                    let em = document.createElement('em');
+                    em.textContent = joke.a;
+                    para1.appendChild(em);
+                    div.appendChild(para1);
+
+                    let para2 = document.createElement('p');
+                    para2.textContent = joke.rating;
+
+                    div.appendChild(para2);
+
+                    section.appendChild(div);
+                }
+
+                let content = document.querySelector("#content");
+                content.innerHTML = "";
+                content.appendChild(section);
+			}
+
+			var url = "jokes.json";
+			xhr.open('GET',url,true);
+			// try to prevent browser caching by sending a header to the server
+			xhr.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2010 00:00:00 GMT");
+			xhr.send();
+		}
+	}())
+	</script>
+</head>
+<body>
+	<h1>Jokes!</h1>
+	<p><button id='mybutton'>Fetch Data</button></p>
+	<div id='content'></div>
+
+</body>
+</html>
